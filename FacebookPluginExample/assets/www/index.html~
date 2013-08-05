@@ -63,9 +63,9 @@
             </script>
     </head>
 	<body>
-	<div data-role="page" class="type-interior" data-theme="b">
+	<div data-role="page" class="type-interior">
 			<div id="fb-root"></div>
-        	<div data-role="header" data-position="inline" data-theme="b">
+        	<div data-role="header" data-position="inline">
 				<a data-inline="true" data-mini="true" data-role="button" onclick="login();">Login</a>
 				<h1>Facebook Friends</h1>
 				<a data-inline="true" data-mini="true" data-role="button" onclick="logout();">Logout</a>

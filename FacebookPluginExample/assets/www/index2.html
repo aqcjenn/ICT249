@@ -1,0 +1,56 @@
+<html xmlns:og="http://ogp.me/ns" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
+<head>
+  <title></title>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- cordova facebook plugin -->
+  <script src="cdv-plugin-fb-connect.js"></script>
+  <!-- facebook js sdk -->
+  <script src="facebook_js_sdk.js"></script> 
+  <script>
+      // Initialize the Facebook SDK
+      document.addEventListener('deviceready', function() {
+          FB.init({
+              appId: '347437122050756',
+              nativeInterface: CDV.FB,
+              useCachedDialogs: false
+          });
+      	 document.getElementById('data').innerHTML = "";
+         login();
+      });
+      
+      function login() {
+		FB.login(
+		function(response) {
+			if (response.session) {
+			getFriendList();
+			} else {
+			alert('not logged in');
+			}
+		},{ perms: "email" }
+		);
+	}
+      
+      function getFriendList(){
+			FB.api('/me/friends', function(response) {
+			if (response.error) {
+				alert(JSON.stringify(response.error));
+			} else {
+				var friends = document.getElementById('friends');
+				response.data.forEach(function(item) {
+					var d = document.createElement('div');
+					d.innerHTML = item.name;
+					data.appendChild(d);
+				});
+			}
+			});
+		}
+
+  </script>
+</head>
+<body>
+   <!-- This initializes the Facebook JS SDK. -->
+  <div id="fb-root"></div>
+  <div id="friends"></div>
+</body>
+</html>
